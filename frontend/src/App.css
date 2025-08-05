@@ -1,38 +1,266 @@
-.App {
-    text-align: center;
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #f97316, #eab308);
+  border-radius: 4px;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ea580c, #d97706);
 }
 
-.App-link {
-    color: #61dafb;
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom animations */
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Hover effects */
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Gradient backgrounds */
+.gradient-orange {
+  background: linear-gradient(135deg, #ff7849 0%, #ffa726 100%);
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #ba68c8 0%, #ab47bc 100%);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+}
+
+/* Custom focus styles */
+.focus-orange:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #f97316;
+  border-color: #f97316;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Badge styles */
+.badge-raga {
+  background: linear-gradient(45deg, #dbeafe, #bfdbfe);
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+}
+
+.badge-tala {
+  background: linear-gradient(45deg, #dcfce7, #bbf7d0);
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.badge-composer {
+  background: linear-gradient(45deg, #fce7f3, #f8bbd6);
+  color: #be185d;
+  border: 1px solid #f9a8d4;
+}
+
+.badge-deity {
+  background: linear-gradient(45deg, #ede9fe, #ddd6fe);
+  color: #6d28d9;
+  border: 1px solid #c4b5fd;
+}
+
+/* Modal animations */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Form styles */
+.form-input {
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(249, 115, 22, 0.15);
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(45deg, #f97316, #ea580c);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #ea580c, #dc2626);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(45deg, #6b7280, #4b5563);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(45deg, #4b5563, #374151);
+  transform: translateY(-1px);
+}
+
+/* Navigation styles */
+.nav-tab {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f97316, #eab308);
+  transition: width 0.3s ease;
+}
+
+.nav-tab.active::before {
+  width: 100%;
+}
+
+/* Loading styles */
+.loading-spinner {
+  background: linear-gradient(45deg, #f97316, #eab308);
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .responsive-text {
+    font-size: 0.875rem;
+  }
+  
+  .responsive-card {
+    margin: 0.5rem;
+  }
+}
+
+/* Indian classical music themed colors */
+.text-carnatic-orange { color: #ff7849; }
+.text-carnatic-gold { color: #ffa726; }
+.text-carnatic-red { color: #d32f2f; }
+.text-carnatic-purple { color: #7b1fa2; }
+.text-carnatic-blue { color: #1976d2; }
+
+.bg-carnatic-orange { background-color: #ff7849; }
+.bg-carnatic-gold { background-color: #ffa726; }
+.bg-carnatic-red { background-color: #d32f2f; }
+.bg-carnatic-purple { background-color: #7b1fa2; }
+.bg-carnatic-blue { background-color: #1976d2; }
+
+/* Typography for Indian classical music theme */
+.carnatic-title {
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.carnatic-subtitle {
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+}
+
+/* Decoration elements */
+.decorative-border {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, #ff7849, #ffa726, #d32f2f) 1;
+}
+
+.decorative-underline {
+  position: relative;
+}
+
+.decorative-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff7849, #ffa726);
+  border-radius: 1px;
 }
